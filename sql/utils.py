@@ -1,26 +1,20 @@
-from run import username
+import sqlite3
+import time
+from getpass import getpass
 
-def pwd():
+
+def create_pwd(username, user_id):
     while True:
-        # -------------choose a password-----------------------------
-        password = str(getpass('Choose a password: '))
-        password1 = str(getpass('Please confirm password: '))
-        # -------------check if both entries match-----------------------
+        password = getpass('Choose a password: ')
+        password1 = getpass('Please confirm password: ')
         if password == password1:
-            # -------------match-----------------------------
-            # --------------send all entries to db---------------------
-            with sqlite3.connect('db/db.sqlite') as db:
-                cursor0 = db.cursor()
-                cursor0.execute(
-                    "UPDATE Users SET Username = ?", username)
-                var_insert.pop(0)
-                var_insert.insert(0, password1)
-                cursor0.execute(
-                    "UPDATE Users SET Password = ?  WHERE Username = ? ", username)
+            with sqlite3.connect('db.sqlite') as db:
+                cursor = db.cursor()
+                data = (username, password, user_id[0])
+                cursor.execute(
+                    "UPDATE Users SET Username = ?, Password = ? WHERE Id = ? ", data)
                 db.commit()
-                cursor0.close()
-                time.sleep(2)
+                cursor.close()
                 break
         else:
-            # -------------no match-----------------------
-            print('Passwords does not match')
+            print('\nPasswords does not match\n')

@@ -5,9 +5,7 @@ from tools import *
 
 
 def register():
-    if os.path.exists('com.karma.toolbox'):
-        pass
-    else:
+    if not os.path.exists('com.karma.toolbox'):
         os.mkdir('com.karma.toolbox')
     first_name = input('First Name: ')
     last_name = input('Last Name: ')
