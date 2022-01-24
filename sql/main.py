@@ -1,4 +1,3 @@
-import datetime
 import sqlite3
 import time
 from getpass import getpass
@@ -27,9 +26,11 @@ def session(user):
 
                                             [2] Web Image Scrapper 
 
-                                            [3] Currency To Naira Converter 
+                                            [3] Currency Converter 
 
                                             [4] Ticket Reservation 
+                                            
+                                            [5] Lottery
 
                                             [*] Enter 0 to Edit Your Details 
 
@@ -44,10 +45,11 @@ def session(user):
         Enter web address:
         => '''))
         elif choice == 3:
-            naira_converter()
-
+            currency_converter()
         elif choice == 4:
             array_collector()
+        elif choice == 5:
+            lottery()
         elif choice == 0:
             edit = input('''            What would you like to edit?
             

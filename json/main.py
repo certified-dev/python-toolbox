@@ -1,9 +1,7 @@
 import time
 import json
 from tools import *
-import os
 import datetime
-from getpass import getpass
 
 
 def session():
@@ -15,10 +13,8 @@ def session():
     check_birthday()
     log_time = time.ctime()
 
-    print('''
 
-                                            ''')
-    print('     --------------------User logged in @ : ' +
+    print('\n\n     --------------------User logged in @ : ' +
           str(log_time) + '--------------------\n')
 
     while True:
@@ -28,9 +24,11 @@ def session():
 
                                             [2] Web Image Scrapper 
 
-                                            [3] Currency To Naira Converter 
+                                            [3] Currency Converter 
 
                                             [4] Ticket Reservation 
+                                         
+                                            [5] Lottery
 
                                             [*] Enter 0 to Edit Your Details 
 
@@ -45,10 +43,11 @@ def session():
         Enter web address:
         => '''))
         elif choice == 3:
-            naira_converter()
-
+            currency_converter()
         elif choice == 4:
             array_collector()
+        elif choice == 5:
+            lottery()
         elif choice == 0:
             edit = input('''            What would you like to edit?
             
@@ -75,9 +74,9 @@ def check_birthday():
 
     referred = data['name']
     mm_dd = data['birthdate'][5:]
-    new_date = str(datetime.date.today())
+    cur_date = datetime.date.today()
 
-    if mm_dd in new_date:
+    if mm_dd in str(cur_date):
         birth_year = data['birthdate'][:4]
         age = int(cur_date.year - int(birth_year))
         new_age = str(age)

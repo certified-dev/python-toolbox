@@ -31,7 +31,7 @@ def register():
 
     data = {}
 
-    input(' Please enter your info correctly\n press any key to continue\n')
+    print(' Please enter your info correctly\n')
 
     data['UserID'] = os_id
     data['name'], data['email'] = input('Full Name: '), input('Email: ')
@@ -39,10 +39,11 @@ def register():
         'Home Address: '), input('Birth Date (YYYY-MM-DD): ')
     data['occupation'], data['telephone'] = input(
         'Occupation: '), input('Telephone: ')
-    time.sleep(2)
-    data['occupation'] = input('Enter A Username: ')
 
-    time.sleep(2)
+    time.sleep(1)
+    data['username'] = input('Enter A Username: ')
+    time.sleep(1)
+
     password = str(getpass('Choose a password: '))
     password1 = str(getpass('Please confirm password: '))
     # -------------check if both entries match-----------------------
